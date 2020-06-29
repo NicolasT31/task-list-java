@@ -51,15 +51,19 @@ public final class ApplicationTest {
         throw new IllegalStateException("The application is still running.");
     }
 
-    @Test
-    public void test_remove_project() {
-
+    @Test(timeout = 1000) public void
+    test_add_task_project() throws IOException {
+        execute("show");
+        execute("add project secrets");
+        read("secrets");
+        execute("quit");
     }
 
     @Test(timeout = 1000) public void
-    test_add_project() throws IOException {
-        execute("add project test");
-        read("test");
+    test_empty_task() throws IOException {
+        execute("show");
+        read("");
+        execute("quit");
     }
 
     @Test(timeout = 1000) public void

@@ -18,6 +18,10 @@ public final class TaskList implements Runnable {
 
     private long lastId = 0;
 
+    public Map<String, List<Task>> getTasks() {
+        return tasks;
+    }
+
     public static void main(String[] args) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter out = new PrintWriter(System.out);
