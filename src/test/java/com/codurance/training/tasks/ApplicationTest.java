@@ -52,6 +52,12 @@ public final class ApplicationTest {
     }
 
     @Test(timeout = 1000) public void
+    test_add_project() throws IOException {
+        execute("add project test");
+        read("test");
+    }
+
+    @Test(timeout = 1000) public void
     it_works() throws IOException {
         execute("show");
 
