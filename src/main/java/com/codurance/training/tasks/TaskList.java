@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -102,6 +103,8 @@ public final class TaskList implements Runnable {
         for (Map.Entry<String, Project> project : projects.entrySet()) {
             out.println(project.getKey());
             for (Task task : project.getValue().getTasks()) {
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                out.println(formatter.format(task.getCreatedAt()));
                 out.printf("    [%c] %d: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription());
             }
             out.println();
