@@ -48,7 +48,14 @@ public final class TaskList implements Runnable {
 
     private void execute(String commandLine) {
         String[] commandRest = commandLine.split(" ", 2);
+        String[] commandsWithArguments = {"add", "check", "uncheck"};
         String command = commandRest[0];
+
+        if(commandRest.length <= 1 && in_array(commandsWithArguments, command)) {
+            invalidArgument();
+            return;
+        }
+
         switch (command) {
             case "show":
                 show();
@@ -69,6 +76,16 @@ public final class TaskList implements Runnable {
                 error(command);
                 break;
         }
+    }
+
+    private boolean in_array(String[] array, String value) {
+        for (Object element : array) {
+            if (element.toString().equals(value)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void show() {
@@ -142,6 +159,11 @@ public final class TaskList implements Runnable {
 
     private void error(String command) {
         out.printf("I don't know what the command \"%s\" is.", command);
+        out.println();
+    }
+
+    private void invalidArgument() {
+        out.printf("Arguments invalides");
         out.println();
     }
 
