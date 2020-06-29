@@ -101,10 +101,11 @@ public final class TaskList implements Runnable {
     private void add(String commandLine) {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
+        String information = subcommandRest[1];
         if (subcommand.equals("project")) {
-            addProject(subcommandRest[1]);
+            addProject(information);
         } else if (subcommand.equals("task")) {
-            String[] projectTask = subcommandRest[1].split(" ", 2);
+            String[] projectTask = information.split(" ", 2);
             String project = projectTask[0];
             String description = projectTask[1];
             addTask(project, description);
