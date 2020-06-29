@@ -88,7 +88,9 @@ public final class TaskList implements Runnable {
             addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
-            addTask(projectTask[0], projectTask[1]);
+            String project = projectTask[0];
+            String description = projectTask[1];
+            addTask(project, description);
         }
     }
 
