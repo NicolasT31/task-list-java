@@ -52,7 +52,7 @@ public final class ApplicationTest {
     }
 
     @Test(timeout = 1000) public void
-    test_add_task_project() throws IOException {
+    test_add_project() throws IOException {
         execute("show");
         execute("add project secrets");
         read("secrets");
