@@ -66,8 +66,8 @@ public final class ApplicationTest {
         execute("quit");
     }
 
-    @Test(timeout = 1000) public void
-    it_works() throws IOException {
+    @Test public void
+    test_add_task_in_project() throws IOException {
         execute("show");
 
         execute("add project secrets");
@@ -76,12 +76,17 @@ public final class ApplicationTest {
 
         execute("show");
         readLines(
-            "secrets",
-            "    [ ] 1: Eat more donuts.",
-            "    [ ] 2: Destroy all humans.",
-            ""
+                "secrets",
+                "    [ ] 1: Eat more donuts.",
+                "    [ ] 2: Destroy all humans.",
+                ""
         );
 
+        execute("quit");
+    }
+
+    @Test(timeout = 1000) public void
+    test_check_tasks_in_project() throws IOException {
         execute("add project training");
         execute("add task training Four Elements of Simple Design");
         execute("add task training SOLID");
